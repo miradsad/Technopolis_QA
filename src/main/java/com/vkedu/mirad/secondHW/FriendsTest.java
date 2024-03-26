@@ -1,6 +1,5 @@
 package com.vkedu.mirad.secondHW;
 
-import com.vkedu.mirad.BaseTest;
 import com.vkedu.mirad.secondHW.PageObjects.AuthPage;
 import com.vkedu.mirad.secondHW.PageObjects.FriendsPage;
 import com.vkedu.mirad.secondHW.PageObjects.MainPage;

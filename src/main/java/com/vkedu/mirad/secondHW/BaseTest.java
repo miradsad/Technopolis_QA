@@ -1,4 +1,4 @@
-package com.vkedu.mirad;
+package com.vkedu.mirad.secondHW;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
