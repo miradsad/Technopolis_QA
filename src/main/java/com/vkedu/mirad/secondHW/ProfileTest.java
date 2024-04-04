@@ -4,9 +4,11 @@ import com.vkedu.mirad.secondHW.PageObjects.AuthPage;
 import com.vkedu.mirad.secondHW.PageObjects.MainPage;
 import com.vkedu.mirad.secondHW.PageObjects.UserPage;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class ProfileTest extends BaseTest {
+    @DisplayName("Проверка города бота")
     @Test
     public void checkBotsCity(){
         AuthPage authPage = new AuthPage(MY_URL);

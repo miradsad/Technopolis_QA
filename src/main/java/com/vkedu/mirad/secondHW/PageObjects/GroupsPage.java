@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GroupsPage {
-    private final ElementsCollection groupsCollection = $$x("//div[@data-l=\"groupCard,POPULAR_GROUPS.popularTop\"]");
+    private final ElementsCollection groupsCollection = $$x(".//*[@data-l=\"groupCard,POPULAR_GROUPS.popularTop\"]");
     public int countNumberOfElements(){
         sleep(5000);
         //с коллекцией элементов shouldBe(visible) не работает, поэтому пришлось прибегнуть к sleep

@@ -6,8 +6,8 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class UserPage {
-    private final SelenideElement additionalInfo = $x("//a[@class=\"user-profile_lk-o ellip-i __redesign\"]//div");
-    private final SelenideElement cityInfo = $x("//div[@class=\"user-profile_i\"]//div[@data-type=\"TEXT\"]");
+    private final SelenideElement additionalInfo = $x(".//*[contains(@class,\"user-profile_lk-o\")]//div");
+    private final SelenideElement cityInfo = $x(".//*[@data-type=\"TEXT\"]");
     public UserPage navigateIntoAdditionalInfo(){
         System.out.println("Перейдём к доп. информации о юзере");
         additionalInfo.shouldBe(visible).click();
