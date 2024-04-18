@@ -1,9 +1,9 @@
-package com.vkedu.mirad.secondHW;
+package com.vkedu.mirad.ThirdHW;
 
-import com.vkedu.mirad.secondHW.ENUMS.StupidStringsEnum;
-import com.vkedu.mirad.secondHW.PageObjects.AuthPage;
-import com.vkedu.mirad.secondHW.PageObjects.MainPage;
-import com.vkedu.mirad.secondHW.PageObjects.SearchResultPage;
+import com.vkedu.mirad.ThirdHW.ENUMS.StupidStringsEnum;
+import com.vkedu.mirad.ThirdHW.PageObjects.AuthPage;
+import com.vkedu.mirad.ThirdHW.PageObjects.MainPage;
+import com.vkedu.mirad.ThirdHW.PageObjects.SearchResultPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,8 +16,8 @@ public class SearchBarParametrizedTest extends BaseTest {
     @ParameterizedTest
     @MethodSource("stupidStringsEnumProvider")
     public void checkHeaderIfStupidSearch(StupidStringsEnum stupidString){
-        AuthPage authPage = new AuthPage(MY_URL);
-        authPage.logIn(MY_LOGIN, MY_PASSWORD);
+        AuthPage authPage = new AuthPage();
+        authPage.enterLogin(MY_LOGIN).enterPassword(MY_PASSWORD).clickAuthButton();
         MainPage mainPage = new MainPage();
         mainPage.searchLikeDummy(stupidString.getValue());
         SearchResultPage searchResultPage = new SearchResultPage();

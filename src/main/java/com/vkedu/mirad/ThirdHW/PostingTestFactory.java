@@ -1,12 +1,11 @@
-package com.vkedu.mirad.secondHW;
+package com.vkedu.mirad.ThirdHW;
 
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
-import com.vkedu.mirad.secondHW.ENUMS.StupidStringsEnum;
-import com.vkedu.mirad.secondHW.PageObjects.AuthPage;
-import com.vkedu.mirad.secondHW.PageObjects.MainPage;
-import com.vkedu.mirad.secondHW.PageObjects.NotesPage;
-import com.vkedu.mirad.secondHW.PageObjects.UserPage;
+import com.vkedu.mirad.ThirdHW.ENUMS.StupidStringsEnum;
+import com.vkedu.mirad.ThirdHW.PageObjects.AuthPage;
+import com.vkedu.mirad.ThirdHW.PageObjects.MainPage;
+import com.vkedu.mirad.ThirdHW.PageObjects.NotesPage;
+import com.vkedu.mirad.ThirdHW.PageObjects.UserPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -17,9 +16,9 @@ public class PostingTestFactory extends BaseTest {
     @TestFactory
     Stream<DynamicTest> testSearchFunctionality() {
         return Stream.of(
-                DynamicTest.dynamicTest("Тест текстовых заметок", () -> {
-                    AuthPage authPage = new AuthPage(MY_URL);
-                    authPage.logIn(MY_LOGIN,MY_PASSWORD);
+                DynamicTest.dynamicTest("Тест создания тестовой заметки", () -> {
+                    AuthPage authPage = new AuthPage();
+                    authPage.enterLogin(MY_LOGIN).enterPassword(MY_PASSWORD).clickAuthButton();
                     MainPage mainPage = new MainPage();
                     mainPage.navigateIntoProfile();
                     UserPage userPage = new UserPage();
@@ -27,9 +26,10 @@ public class PostingTestFactory extends BaseTest {
                     NotesPage notesPage = new NotesPage();
                     notesPage.openPostingMenu().postText(StupidStringsEnum.STRING_1.getValue());
                     Assertions.assertEquals(StupidStringsEnum.STRING_1.getValue(), notesPage.checkPostedText());
+                    notesPage.closeNote().clickLogo();
                 }),
-                DynamicTest.dynamicTest("Test post delete", () -> {
-                    MainPage mainPage = new MainPage(MY_URL);
+                DynamicTest.dynamicTest("Тест удаления заметки", () -> {
+                    MainPage mainPage = new MainPage();
                     mainPage.navigateIntoProfile();
                     UserPage userPage = new UserPage();
                     userPage.navigateIntoNotes();

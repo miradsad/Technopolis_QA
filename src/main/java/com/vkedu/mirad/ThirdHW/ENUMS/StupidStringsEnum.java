@@ -1,4 +1,4 @@
-package com.vkedu.mirad.secondHW.ENUMS;
+package com.vkedu.mirad.ThirdHW.ENUMS;
 
 public enum StupidStringsEnum {
     STRING_1("hdabshdjbakhjserncqbueafasjdfnajsfnjasdfnasdfjasfkjkadnfasfdggadgfajgfkjaskuUWVUAGYUF"),

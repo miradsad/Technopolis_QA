@@ -1,23 +1,31 @@
-package com.vkedu.mirad.secondHW.PageObjects;
+package com.vkedu.mirad.ThirdHW.PageObjects;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.conditions.Not;
-import org.openqa.selenium.interactions.Actions;
+import org.junit.jupiter.api.Assertions;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.sleep;
 
-public class NotesPage {
+public class NotesPage implements BasePage {
     private final SelenideElement postMenu = $x(".//*[@class=\"pf-head_itx_a\"]");
     private final SelenideElement postInput = $x(".//*[@role=\"textbox\"]//div");
     private final SelenideElement submitButton = $x(".//*[@data-l=\"t,button.submit\"]");
     private final SelenideElement ourPost = $x(".//*[@class=\"media-text_a\"]");
     private final SelenideElement ourPostText = $x(".//*[@link-class=\"media-text_lnk\"]");
     private final SelenideElement postActions = $x(".//*[@class=\"new_topic_icodown\"]");
-    private final SelenideElement deleteButton = $x(".//*[@id=\"hook_Block_ShortcutMenu\"]//ul//li[3]");
+    private final SelenideElement deleteButton = $x(".//*[@id=\"hook_Block_ShortcutMenu\"]//ul//li[3]"); //не понял как обратиться иначе, слишкм много хидден элементов странных иначе
     private final SelenideElement emptyPostListString = $x(".//div[contains(@class,\"stub-empty \") and contains(@class,\"__v2\")]/div");
+    private final SelenideElement closeButton = $x(".//*[@data-l=\"t,mtLayerClose\"]");
+    private final SelenideElement logo = $x(".//*[@data-l=\"t,logo\"]");
+
+    public NotesPage(){
+        check();
+    }
+
+    @Override
+    public void check() {
+        Assertions.assertEquals("Напишите заметку", $x(".//*[@class=\"pf-head_itx\"]").shouldBe(visible).getText());
+    }
 
     public NotesPage openPostingMenu(){
         System.out.println("Нажимаем на меню создания поста...");
@@ -53,6 +61,14 @@ public class NotesPage {
         String s = emptyPostListString.shouldBe(visible).getText();
         System.out.println("Наша строка: " + s);
         return s;
+    }
+    public NotesPage closeNote(){
+        closeButton.should(exist).click();
+        return this;
+    }
+    public MainPage clickLogo(){
+        logo.shouldBe(visible).click();
+        return new MainPage();
     }
 
 }
